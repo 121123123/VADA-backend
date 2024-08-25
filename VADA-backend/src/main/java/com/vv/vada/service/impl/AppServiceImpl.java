@@ -13,6 +13,7 @@ import com.vv.vada.model.entity.App;
 import com.vv.vada.model.entity.AppFavour;
 import com.vv.vada.model.entity.AppThumb;
 import com.vv.vada.model.entity.User;
+import com.vv.vada.model.enums.ReviewStatusEnum;
 import com.vv.vada.model.vo.AppVO;
 import com.vv.vada.model.vo.UserVO;
 import com.vv.vada.service.AppService;
@@ -25,17 +26,11 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
  * 应用服务实现
- *
- * @author <a href="https://github.com/liyupi">程序员鱼皮</a>
- * @from <a href="https://www.code-nav.cn">编程导航学习圈</a>
  */
 @Service
 @Slf4j
@@ -53,18 +48,28 @@ public class AppServiceImpl extends ServiceImpl<AppMapper, App> implements AppSe
     @Override
     public void validApp(App app, boolean add) {
         ThrowUtils.throwIf(app == null, ErrorCode.PARAMS_ERROR);
-        // todo 从对象中取值
-        String title = app.getTitle();
+        // 从对象中取值
+        String appName = app.getAppName();
+        String appDesc = app.getAppDesc();
+        String appIcon = app.getAppIcon();
+        Integer appType = app.getAppType();
+        Integer scoringStrategy = app.getScoringStrategy();
+        Integer reviewStatus = app.getReviewStatus();
+
         // 创建数据时，参数不能为空
         if (add) {
-            // todo 补充校验规则
-            ThrowUtils.throwIf(StringUtils.isBlank(title), ErrorCode.PARAMS_ERROR);
+            // 补充校验规则
+            ThrowUtils.throwIf(StringUtils.isBlank(appName), ErrorCode.PARAMS_ERROR,"应用名称不能为空");
+            ThrowUtils.throwIf(StringUtils.isBlank(appDesc), ErrorCode.PARAMS_ERROR,"应用描述不能为空");
+            ReviewStatusEnum reviewStatusEnum = ReviewStatusEnum.getEnumByValue(reviewStatus);
+            ThrowUtils.throwIf(reviewStatusEnum == null, ErrorCode.PARAMS_ERROR,"审核状态不能为空");
         }
         // 修改数据时，有参数则校验
-        // todo 补充校验规则
-        if (StringUtils.isNotBlank(title)) {
-            ThrowUtils.throwIf(title.length() > 80, ErrorCode.PARAMS_ERROR, "标题过长");
+        // 补充校验规则
+        if (StringUtils.isNotBlank(appName)) {
+            ThrowUtils.throwIf(appName.length() < 80, ErrorCode.PARAMS_ERROR, "应用名称要小于80");
         }
+
     }
 
     /**

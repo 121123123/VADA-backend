@@ -1,8 +1,11 @@
 package com.vv.vada.model.dto.question;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -13,26 +16,20 @@ import java.util.List;
  */
 @Data
 public class QuestionUpdateRequest implements Serializable {
-
     /**
      * id
      */
     private Long id;
 
     /**
-     * 标题
+     * 题目内容（json格式）
      */
-    private String title;
+    private String questionContent;
 
     /**
-     * 内容
+     * 应用 id
      */
-    private String content;
-
-    /**
-     * 标签列表
-     */
-    private List<String> tags;
+    private Long appId;
 
     private static final long serialVersionUID = 1L;
 }

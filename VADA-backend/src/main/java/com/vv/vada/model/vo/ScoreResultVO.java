@@ -1,6 +1,8 @@
 package com.vv.vada.model.vo;
 
 import cn.hutool.json.JSONUtil;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.vv.vada.model.entity.ScoreResult;
 import lombok.Data;
 import org.springframework.beans.BeanUtils;
@@ -11,32 +13,38 @@ import java.util.List;
 
 /**
  * 评分结果视图
- *
- * @author <a href="https://github.com/liyupi">程序员鱼皮</a>
- * @from <a href="https://www.code-nav.cn">编程导航学习圈</a>
  */
 @Data
 public class ScoreResultVO implements Serializable {
-
     /**
      * id
      */
     private Long id;
 
     /**
-     * 标题
+     * 结果名称，如物流师
      */
-    private String title;
+    private String resultName;
 
     /**
-     * 内容
+     * 结果描述
      */
-    private String content;
+    private String resultDesc;
 
     /**
-     * 创建用户 id
+     * 结果图片
      */
-    private Long userId;
+    private String resultPicture;
+
+    /**
+     * 结果属性集合 JSON，如 [I,S,T,J]
+     */
+    private List<String> resultProp;
+
+    /**
+     * 应用 id
+     */
+    private Long appId;
 
     /**
      * 创建时间
@@ -47,11 +55,6 @@ public class ScoreResultVO implements Serializable {
      * 更新时间
      */
     private Date updateTime;
-
-    /**
-     * 标签列表
-     */
-    private List<String> tagList;
 
     /**
      * 创建用户信息
@@ -70,8 +73,7 @@ public class ScoreResultVO implements Serializable {
         }
         ScoreResult scoreResult = new ScoreResult();
         BeanUtils.copyProperties(scoreResultVO, scoreResult);
-        List<String> tagList = scoreResultVO.getTagList();
-        scoreResult.setTags(JSONUtil.toJsonStr(tagList));
+        scoreResult.setResultProp(JSONUtil.toJsonStr(scoreResultVO.getResultProp()));
         return scoreResult;
     }
 
@@ -87,7 +89,7 @@ public class ScoreResultVO implements Serializable {
         }
         ScoreResultVO scoreResultVO = new ScoreResultVO();
         BeanUtils.copyProperties(scoreResult, scoreResultVO);
-        scoreResultVO.setTagList(JSONUtil.toList(scoreResult.getTags(), String.class));
+        scoreResultVO.setResultProp(JSONUtil.toList(scoreResult.getResultProp(), String.class));
         return scoreResultVO;
     }
 }

@@ -18,6 +18,11 @@ import java.util.List;
 public class AppQueryRequest extends PageRequest implements Serializable {
 
     /**
+     * id
+     */
+    private Long id;
+
+    /**
      * 应用名
      */
     private String appName;
@@ -26,6 +31,11 @@ public class AppQueryRequest extends PageRequest implements Serializable {
      * 应用描述
      */
     private String appDesc;
+
+    /**
+     * 应用图标
+     */
+    private String appIcon;
 
     /**
      * 应用类型（0-得分类，1-测评类）
@@ -43,34 +53,29 @@ public class AppQueryRequest extends PageRequest implements Serializable {
     private Integer reviewStatus;
 
     /**
+     * 审核信息
+     */
+    private String reviewMessage;
+
+    /**
+     * 审核人 id
+     */
+    private Long reviewerId;
+
+    /**
      * 创建用户 id
      */
     private Long userId;
 
     /**
-     * 创建时间
+     * id
      */
-    private Date createTime;
+    private Long notId;
 
     /**
      * 搜索词
      */
     private String searchText;
-
-    /**
-     * 标题
-     */
-    private String title;
-
-    /**
-     * 内容
-     */
-    private String content;
-
-    /**
-     * 标签列表
-     */
-    private List<String> tags;
 
     private static final long serialVersionUID = 1L;
 }

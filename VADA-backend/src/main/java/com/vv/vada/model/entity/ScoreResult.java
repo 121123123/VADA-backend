@@ -12,7 +12,7 @@ import lombok.Data;
  */
 @TableName(value ="scoring_result")
 @Data
-public class ScoringResult implements Serializable {
+public class ScoreResult implements Serializable {
     /**
      * id
      */

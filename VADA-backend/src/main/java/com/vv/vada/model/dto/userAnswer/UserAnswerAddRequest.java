@@ -1,33 +1,29 @@
 package com.vv.vada.model.dto.userAnswer;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 /**
  * 创建用户答案请求
  *
- * @author <a href="https://github.com/liyupi">程序员鱼皮</a>
- * @from <a href="https://www.code-nav.cn">编程导航学习圈</a>
  */
 @Data
 public class UserAnswerAddRequest implements Serializable {
 
     /**
-     * 标题
+     * 应用 id
      */
-    private String title;
+    private Long appId;
 
     /**
-     * 内容
+     * 用户答案（JSON 数组）
      */
-    private String content;
-
-    /**
-     * 标签列表
-     */
-    private List<String> tags;
+    private List<String> choices;
 
     private static final long serialVersionUID = 1L;
 }

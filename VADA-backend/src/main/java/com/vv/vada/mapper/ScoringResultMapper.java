@@ -1,6 +1,6 @@
 package com.vv.vada.mapper;
 
-import com.vv.vada.model.entity.ScoringResult;
+import com.vv.vada.model.entity.ScoreResult;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 * @createDate 2024-08-25 13:58:32
 * @Entity com.vv.vada.model.entity.ScoringResult
 */
-public interface ScoringResultMapper extends BaseMapper<ScoringResult> {
+public interface ScoringResultMapper extends BaseMapper<ScoreResult> {
 
 }
 

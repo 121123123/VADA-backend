@@ -44,19 +44,19 @@ public class AppUpdateRequest implements Serializable {
     private Integer scoringStrategy;
 
     /**
-     * 标题
+     * 审核状态：0-待审核, 1-通过, 2-拒绝
      */
-    private String title;
+    private Integer reviewStatus;
 
     /**
-     * 内容
+     * 审核信息
      */
-    private String content;
+    private String reviewMessage;
 
     /**
-     * 标签列表
+     * 审核人 id
      */
-    private List<String> tags;
+    private Long reviewerId;
 
     private static final long serialVersionUID = 1L;
 }
