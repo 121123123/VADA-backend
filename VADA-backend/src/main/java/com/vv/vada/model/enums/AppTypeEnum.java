@@ -26,7 +26,7 @@ public enum AppTypeEnum {
         this.code = code;
     }
 
-    public static AppTypeEnum getAppTypeEnumByCode(int code) {
+    public static AppTypeEnum getAppTypeEnumByCode(Integer code) {
         if (ObjectUtil.isEmpty(code)) {
             return null;
         }

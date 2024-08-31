@@ -3,6 +3,7 @@ package com.vv.vada.model.vo;
 import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.vv.vada.model.entity.ScoreResult;
 import lombok.Data;
 import org.springframework.beans.BeanUtils;
@@ -42,9 +43,19 @@ public class ScoreResultVO implements Serializable {
     private List<String> resultProp;
 
     /**
+     * 结果得分范围，如 80，表示 80及以上的分数命中此结果
+     */
+    private Integer resultScoreRange;
+
+    /**
      * 应用 id
      */
     private Long appId;
+
+    /**
+     * 创建用户 id
+     */
+    private Long userId;
 
     /**
      * 创建时间

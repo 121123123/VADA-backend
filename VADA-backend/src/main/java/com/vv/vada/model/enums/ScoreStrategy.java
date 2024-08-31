@@ -22,7 +22,7 @@ public enum ScoreStrategy {
         this.code = code;
     }
 
-    public static ScoreStrategy getScoreStrategy(int code) {
+    public static ScoreStrategy getScoreStrategy(Integer code) {
         if (ObjectUtil.isEmpty(code)) {
             return null;
         }

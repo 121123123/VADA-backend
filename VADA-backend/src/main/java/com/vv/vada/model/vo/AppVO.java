@@ -3,8 +3,10 @@ package com.vv.vada.model.vo;
 import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.vv.vada.model.entity.App;
 import lombok.Data;
+import org.apache.ibatis.annotations.Lang;
 import org.springframework.beans.BeanUtils;
 
 import java.io.Serializable;
@@ -16,6 +18,7 @@ import java.util.List;
  */
 @Data
 public class AppVO implements Serializable {
+
     /**
      * id
      */
@@ -45,26 +48,6 @@ public class AppVO implements Serializable {
      * 评分策略（0-自定义，1-AI）
      */
     private Integer scoringStrategy;
-
-    /**
-     * 审核状态：0-待审核, 1-通过, 2-拒绝
-     */
-    private Integer reviewStatus;
-
-    /**
-     * 审核信息
-     */
-    private String reviewMessage;
-
-    /**
-     * 审核人 id
-     */
-    private Long reviewerId;
-
-    /**
-     * 审核时间
-     */
-    private Date reviewTime;
 
     /**
      * 创建用户 id

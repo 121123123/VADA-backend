@@ -51,17 +51,17 @@ public class AppController {
     @PostMapping("/add")
     public BaseResponse<Long> addApp(@RequestBody AppAddRequest appAddRequest, HttpServletRequest request) {
         ThrowUtils.throwIf(appAddRequest == null, ErrorCode.PARAMS_ERROR);
-        // todo 在此处将实体类和 DTO 进行转换
+        // DTO转PO
         App app = new App();
         BeanUtils.copyProperties(appAddRequest, app);
         // 数据校验
         appService.validApp(app, true);
-        // todo 填充默认值
+        // 填充默认值
         User loginUser = userService.getLoginUser(request);
         app.setUserId(loginUser.getId());
         // 写入数据库
         boolean result = appService.save(app);
-        ThrowUtils.throwIf(!result, ErrorCode.OPERATION_ERROR);
+        ThrowUtils.throwIf(!result, ErrorCode.SYSTEM_ERROR);
         // 返回新写入的数据 id
         long newAppId = app.getId();
         return ResultUtils.success(newAppId);

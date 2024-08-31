@@ -3,6 +3,7 @@ package com.vv.vada.model.vo;
 import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.vv.vada.model.entity.UserAnswer;
 import lombok.Data;
 import org.springframework.beans.BeanUtils;
@@ -17,7 +18,7 @@ import java.util.List;
 @Data
 public class UserAnswerVO implements Serializable {
     /**
-     *
+     * id
      */
     private Long id;
 
@@ -75,11 +76,6 @@ public class UserAnswerVO implements Serializable {
      * 创建时间
      */
     private Date createTime;
-
-    /**
-     * 更新时间
-     */
-    private Date updateTime;
 
     /**
      * 创建用户信息

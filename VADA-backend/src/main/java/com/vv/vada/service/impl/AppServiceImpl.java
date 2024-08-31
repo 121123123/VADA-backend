@@ -1,6 +1,7 @@
 package com.vv.vada.service.impl;
 
 import cn.hutool.core.collection.CollUtil;
+import cn.hutool.core.util.ObjectUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -54,20 +55,23 @@ public class AppServiceImpl extends ServiceImpl<AppMapper, App> implements AppSe
         String appIcon = app.getAppIcon();
         Integer appType = app.getAppType();
         Integer scoringStrategy = app.getScoringStrategy();
-        Integer reviewStatus = app.getReviewStatus();
 
         // 创建数据时，参数不能为空
         if (add) {
             // 补充校验规则
             ThrowUtils.throwIf(StringUtils.isBlank(appName), ErrorCode.PARAMS_ERROR,"应用名称不能为空");
             ThrowUtils.throwIf(StringUtils.isBlank(appDesc), ErrorCode.PARAMS_ERROR,"应用描述不能为空");
-            ReviewStatusEnum reviewStatusEnum = ReviewStatusEnum.getEnumByValue(reviewStatus);
-            ThrowUtils.throwIf(reviewStatusEnum == null, ErrorCode.PARAMS_ERROR,"审核状态不能为空");
+            ThrowUtils.throwIf(ObjectUtil.isEmpty(appType), ErrorCode.PARAMS_ERROR,"应用类型不能为空");
+            ThrowUtils.throwIf(ObjectUtil.isEmpty(scoringStrategy), ErrorCode.PARAMS_ERROR,"应用评分策略不能为空");
+            ThrowUtils.throwIf(StringUtils.isEmpty(appIcon), ErrorCode.PARAMS_ERROR,"应用图标不能为空");
         }
         // 修改数据时，有参数则校验
         // 补充校验规则
         if (StringUtils.isNotBlank(appName)) {
-            ThrowUtils.throwIf(appName.length() < 80, ErrorCode.PARAMS_ERROR, "应用名称要小于80");
+            ThrowUtils.throwIf(appName.length() > 80, ErrorCode.PARAMS_ERROR, "应用名称要小于80");
+        }
+        if (StringUtils.isNotBlank(appDesc)) {
+            ThrowUtils.throwIf(appDesc.length() > 80, ErrorCode.PARAMS_ERROR, "应用描述要小于80");
         }
 
     }

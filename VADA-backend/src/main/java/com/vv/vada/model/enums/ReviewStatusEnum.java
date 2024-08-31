@@ -27,7 +27,7 @@ public enum ReviewStatusEnum {
     /**
      * 根据value值获取枚举
      */
-    public static ReviewStatusEnum getEnumByValue(int value) {
+    public static ReviewStatusEnum getEnumByValue(Integer value) {
         if (ObjectUtil.isEmpty(value)) {
             return null;
         }
