@@ -17,5 +17,7 @@ public class PostFavourAddRequest implements Serializable {
      */
     private Long postId;
 
+    private double favour;
+
     private static final long serialVersionUID = 1L;
 }
