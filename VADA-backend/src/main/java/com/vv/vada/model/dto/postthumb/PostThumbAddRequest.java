@@ -19,5 +19,7 @@ public class PostThumbAddRequest implements Serializable {
 
     private int id;
 
+    private String title;
+
     private static final long serialVersionUID = 1L;
 }
