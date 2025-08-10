@@ -10,8 +10,6 @@ import com.vv.vada.exception.ThrowUtils;
 import com.vv.vada.mapper.QuestionMapper;
 import com.vv.vada.model.dto.question.QuestionQueryRequest;
 import com.vv.vada.model.entity.Question;
-import com.vv.vada.model.entity.QuestionFavour;
-import com.vv.vada.model.entity.QuestionThumb;
 import com.vv.vada.model.entity.User;
 import com.vv.vada.model.vo.QuestionVO;
 import com.vv.vada.model.vo.UserVO;
@@ -33,9 +31,6 @@ import java.util.stream.Collectors;
 
 /**
  * 题目服务实现
- *
- * @author <a href="https://github.com/liyupi">程序员鱼皮</a>
- * @from <a href="https://www.code-nav.cn">编程导航学习圈</a>
  */
 @Service
 @Slf4j
@@ -53,7 +48,7 @@ public class QuestionServiceImpl extends ServiceImpl<QuestionMapper, Question> i
     @Override
     public void validQuestion(Question question, boolean add) {
         ThrowUtils.throwIf(question == null, ErrorCode.PARAMS_ERROR);
-        // todo 从对象中取值
+        // 从对象中取值
         String title = question.getTitle();
         // 创建数据时，参数不能为空
         if (add) {
