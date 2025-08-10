@@ -23,5 +23,7 @@ public class PostThumbAddRequest implements Serializable {
 
     private float new_json;
 
+    private int maxNo;
+
     private static final long serialVersionUID = 1L;
 }
